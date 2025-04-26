@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const LoginPage = () => {
     const router = useRouter();
@@ -23,8 +24,12 @@ const LoginPage = () => {
             localStorage.setItem('access_token', res.data.access_token);
             localStorage.setItem('refresh_token', res.data.refresh_token);
             router.push('/');
-        } catch (err: any) {
-            alert(err.response?.data?.error || 'Login failed');
+        } catch (err: unknown) { // ✅ Removed `any`, use `unknown`
+            if (axios.isAxiosError(err)) {
+                alert(err.response?.data?.error || 'Login failed');
+            } else {
+                alert('An unexpected error occurred.');
+            }
         }
     };
 
@@ -33,9 +38,9 @@ const LoginPage = () => {
             <header className="w-full bg-white shadow-md p-5 flex justify-between items-center fixed top-0 z-10">
                 <h2 className="text-2xl font-bold text-gray-800">🎉 EventHub</h2>
                 <nav className="flex gap-6 text-base">
-                    <a href="/" className="text-gray-700 font-medium hover:text-purple-700 transition">Home</a>
-                    <a href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">Jobs</a>
-                    <a href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">About</a>
+                    <Link href="/" className="text-gray-700 font-medium hover:text-purple-700 transition">Home</Link>
+                    <Link href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">Jobs</Link>
+                    <Link href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">About</Link>
                 </nav>
             </header>
 

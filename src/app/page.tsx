@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 
 export default function HomePage() {
   const [loaded, setLoaded] = useState(false);
@@ -23,25 +24,28 @@ export default function HomePage() {
           🎉 EventSphere
         </h2>
         <nav className="flex gap-6 text-base font-medium">
-          <a href="/" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
+          <Link href="/" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
             Home
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="/event" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
+          </Link>
+          <Link href="/event" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
             Events
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
+          </Link>
+          <Link href="#" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
             About Us
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="/login" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
+          </Link>
+          <Link href="/login" className="text-gray-800 hover:text-purple-600 transition duration-300 relative group">
             Log In
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="/registration" className="text-white bg-gradient-to-r from-purple-600 to-pink-500 px-4 py-2 rounded-lg hover:from-purple-700 hover:to-pink-600 transition duration-300 shadow-md">
+          </Link>
+          <Link
+            href="/registration"
+            className="text-white bg-gradient-to-r from-purple-600 to-pink-500 px-4 py-2 rounded-lg hover:from-purple-700 hover:to-pink-600 transition duration-300 shadow-md"
+          >
             Sign Up
-          </a>
+          </Link>
         </nav>
       </header>
 

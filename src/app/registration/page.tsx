@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const RegisterPage = () => {
@@ -39,9 +40,9 @@ const RegisterPage = () => {
             <header className="w-full bg-white shadow-md p-5 flex justify-between items-center fixed top-0 z-10">
                 <h2 className="text-2xl font-bold text-gray-800">🎉 EventHub</h2>
                 <nav className="flex gap-6 text-base">
-                    <a href="/" className="text-gray-700 font-medium hover:text-purple-700 transition">Home</a>
-                    <a href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">Jobs</a>
-                    <a href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">About</a>
+                <Link href="/" className="text-gray-700 font-medium hover:text-purple-700 transition">Home</Link>
+                <Link href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">Jobs</Link>
+                <Link href="#" className="text-gray-700 font-medium hover:text-purple-700 transition">About</Link>
                 </nav>
             </header>
 
