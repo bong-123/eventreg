@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AxiosError } from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
 
