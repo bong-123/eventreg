@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 const RegisterPage = () => {
@@ -30,11 +31,11 @@ const RegisterPage = () => {
             const res = await axios.post('http://127.0.0.1:8000/api/register/', formData);
             alert(res.data.message);
             router.push('/');
-        } catch (err: any) {
-            alert(JSON.stringify(err.response?.data || 'Registration failed'));
+        } catch (err: unknown) { // ⬅️ 'unknown' not 'any'
+            const axiosError = err as AxiosError<{ message?: string }>; // ⬅️ safe cast
+            alert(axiosError.response?.data?.message || 'Registration failed');
         }
     };
-
     return (
         <div className="flex flex-col items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white min-h-screen pt-28 px-4">
             <header className="w-full bg-white shadow-md p-5 flex justify-between items-center fixed top-0 z-10">
